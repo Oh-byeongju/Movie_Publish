@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Table(name="Movie_actor")
+@Table(name="movie_actor")
 @Entity
 @Getter
 @NoArgsConstructor

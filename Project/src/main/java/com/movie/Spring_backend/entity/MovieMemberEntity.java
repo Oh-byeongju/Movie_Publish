@@ -14,7 +14,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-@Table(name="Movie_member")
+@Table(name="movie_member")
 @Entity
 @Getter
 @NoArgsConstructor
