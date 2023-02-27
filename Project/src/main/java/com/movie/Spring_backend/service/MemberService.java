@@ -141,6 +141,7 @@ public class MemberService {
                     .build();
             refreshTokenRepository.save(refreshToken);
 
+
             // XSS를 방지하기 위해 httpOnly 기능을 활성화
             // access 토큰을 헤더에 넣기 위한 작업
             // maxAge는 지정 안할경우 브라우저 기준으로 session

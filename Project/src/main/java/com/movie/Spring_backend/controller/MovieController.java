@@ -18,6 +18,9 @@ public class MovieController {
     // 전체 영화 가져오는 메소드
     @GetMapping("/normal/allmovie")
     public ResponseEntity<List<MovieDto>> AllMovie(@RequestParam("uid") String uid) {
+
+        System.out.println("컨트롤러는 들어옴");
+
         return ResponseEntity.ok().body(movieService.getAllMovie(uid));
     }
 
