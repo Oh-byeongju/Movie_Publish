@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-@CrossOrigin(origins = "${spring.cors.origins}", allowCredentials = "true")
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/seat")

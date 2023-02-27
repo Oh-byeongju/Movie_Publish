@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 
 //crossorigin 바꿔야함
 import java.util.List;
-@CrossOrigin(origins = "${spring.cors.origins}", allowCredentials = "true")
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/infomovie")

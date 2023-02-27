@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "${spring.cors.origins}", allowCredentials = "true")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/v2")

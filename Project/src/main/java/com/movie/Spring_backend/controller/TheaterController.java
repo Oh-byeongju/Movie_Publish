@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "${spring.cors.origins}", allowCredentials = "true")
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/v2")
