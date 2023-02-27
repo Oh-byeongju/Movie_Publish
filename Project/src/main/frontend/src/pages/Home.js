@@ -1,14 +1,12 @@
 import React from "react";
-import TopButtons from "../Common_components/TopButtons";
 import { createGlobalStyle } from "styled-components";
-import BoxList from "../boxoffice/BoxList";
-import HomeBanner from "../Common_components/HomeBanner";
+import BoxList from "../components/BoxOffice/BoxList";
+import HomeBanner from "../components/Common_components/HomeBanner";
 
 const Home = () => {
   return (
     <>
       <GlobalStyle />
-      <TopButtons />
       <HomeBanner />
       <BoxList />
     </>

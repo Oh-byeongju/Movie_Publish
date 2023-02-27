@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f68c1471-8a4d-459e-8402-d57fd3a14e7e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Project/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Project/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/main/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/main/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/main/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/main/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/main/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/main/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/main/frontend/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/main/frontend/src/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/main/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/main/frontend/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/main/frontend/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/main/frontend/src/pages/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/main/frontend/강경목.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/main/frontend/강경목2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/main/frontend/확인용.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/movie/Spring_backend/MovieServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/main/java/com/movie/Spring_backend/MovieServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/movie/Spring_backend/controller/WebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/main/java/com/movie/Spring_backend/controller/WebController.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2MJXqEXQYUhEBVG16G0axMbrHxk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/OBJ/PROJECT/Movie_Publish/Project"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f68c1471-8a4d-459e-8402-d57fd3a14e7e" name="Changes" comment="" />
+      <created>1677486847865</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677486847865</updated>
+    </task>
+    <servers />
+  </component>
+</project>
