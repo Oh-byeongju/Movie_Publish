@@ -11,7 +11,7 @@ public class MovieServerApplication {
 
 		while(true) {
 			System.out.println("작동중");
-			Thread.sleep(15000);
+			Thread.sleep(25000);
 		}
 	}
 
