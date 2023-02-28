@@ -62,7 +62,6 @@ public class WebSecurityConfig {
 
                 .and()
                 // cors 관련 필터 적용(전역 설정)
-                .addFilter(corsConfig.corsFilter())
                 // 사전에 만든 JwtSecurityConfig 클래스를 통해 tokenProvider를 적용(Security 필터 적용)
                 .apply(new JwtSecurityConfig(tokenProvider));
 
