@@ -56,8 +56,8 @@ public class WebSecurityConfig {
                 // 모든 Requests에서 /**/normal/**를 제외한 모든 uri의 request는 로그인 토큰이 필요
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/", "/UserLogin","/UserJoin", "/Reserve", "/movie", "/moviedetail/", "/StoryChange").permitAll() // 해당 경로의 GET 요청은 무조건 접근을 허용
-                .antMatchers("/**/normal/**").permitAll()
+//                .antMatchers(HttpMethod.GET, "/", "/UserLogin","/UserJoin", "/Reserve", "/movie", "/moviedetail/", "/StoryChange").permitAll() // 해당 경로의 GET 요청은 무조건 접근을 허용
+                .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
 //                .antMatchers("/mypage").hasRole("ADMIN") // ROLE_ADMIN 권한을 가진 사용자만 접근 허용 추후 사용
 
