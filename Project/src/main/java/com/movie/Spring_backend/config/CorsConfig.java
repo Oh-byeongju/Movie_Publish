@@ -17,7 +17,7 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         // localhost:3000에서 호출하는 요청은 모두 허용하고 쿠키도 같이 받아오게함
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://172:31:11:254:8080");
+        config.addAllowedOrigin("http://43.200.251.235:8080");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**",config);
