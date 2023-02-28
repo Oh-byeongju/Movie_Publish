@@ -13,10 +13,14 @@ public class SeatDto {
     private String sname;
 
     private CinemaEntity cinema;
+
+    private String able;
+
     @Builder
-    public SeatDto(Long sid ,String sname, CinemaEntity cinema) {
+    public SeatDto(Long sid ,String sname, CinemaEntity cinema,String able) {
         this.sid=sid;
         this.sname=sname;
         this.cinema=cinema;
+        this.able=able;
     }
 }

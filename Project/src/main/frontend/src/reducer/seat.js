@@ -133,19 +133,19 @@ const seat = (state = initalState, action) => {
         check_seat_error: null,
       };
     case CHECK_SEAT_SUCCESS:
-      let newState = { ...state };
+      /*      let newState = { ...state };
 
       const result = state.choiceSeat.filter((item) => {
         return !action.data.some((other) => other.seatid === item.seat_id);
-      }); //교집합 some을 이용한  seat에서 ocuppy 제거
-      console.log(result);
+      }); //교집합 some을 이용한  seat에서 ocuppy 제거*/
       return {
         ...state,
         check_seat_loading: false,
         check_seat_done: true,
         check_seat_error: null,
+        ocuppyseat: action.data /*
         ocuppyseat: newState.ocuppyseat.concat(action.data),
-        choiceSeat: result,
+        choiceSeat: result,*/,
       };
     case CHECK_SEAT_FAILURE:
       return {

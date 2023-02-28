@@ -48,7 +48,7 @@ const Seat = () => {
     ) {
       dispatch({
         type: SELECT_SEAT_REQUEST,
-        data: scheduleData.cid,
+        data: { id: scheduleData.cid, miid: scheduleData.miid },
       });
       dispatch({
         type: SELECT_INFOSEAT_REQUEST,
@@ -261,7 +261,7 @@ const Seat = () => {
                   is_reserved = true;
                 }
               });
-              ocuppyseat.find((ocuppy) => {
+              /*ocuppyseat.find((ocuppy) => {
                 if (
                   scheduleData.miid === ocuppy.miid &&
                   seat.sid === ocuppy.seatid
@@ -272,7 +272,7 @@ const Seat = () => {
                   //초기화시키기 점유된 영화가있을경우
                 }
               });
-
+*/
               return (
                 <div>
                   <SeatButton
@@ -284,7 +284,6 @@ const Seat = () => {
                     selectedRows={selectedRows}
                     setSelectedRows={setSelectedRows}
                     removeSeats={removeSeats}
-                    choiceSeat={choiceSeat}
                   />
                 </div>
               );

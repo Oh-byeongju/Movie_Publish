@@ -25,6 +25,7 @@ const AllMovieList = ({ setDayMore, page }) => {
     DayData,
   } = useSelector((state) => state.ticket);
   const location = useLocation();
+  
   useEffect(() => {
     //첫 로딩
     if (location.state === null) {

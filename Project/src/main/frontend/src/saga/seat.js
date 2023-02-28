@@ -15,7 +15,8 @@ async function selectSeatApi(data) {
   return await http
     .get("/seat/normal/infoseat", {
       params: {
-        id: data,
+        id: data.id,
+        miid: data.miid,
       },
     })
     .then((response) => {
@@ -87,12 +88,6 @@ async function checkSeatApi(data) {
 function* checkSeat(action) {
   const result = yield call(checkSeatApi, action.data);
   console.log(result);
-  if (result.data.length === 0) {
-    console.log("문제없음");
-  } else if (result.data.length > 0) {
-    alert("점유된 좌석입니다.");
-    console.log("문제있음");
-  }
 
   if (result.status === 200) {
     yield put({

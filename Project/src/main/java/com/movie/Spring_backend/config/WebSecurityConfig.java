@@ -10,6 +10,7 @@ import com.movie.Spring_backend.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -26,7 +27,6 @@ import org.springframework.stereotype.Component;
 public class WebSecurityConfig {
 
     private final TokenProvider tokenProvider;
-    private final CorsConfig corsConfig;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
 
@@ -56,12 +56,12 @@ public class WebSecurityConfig {
                 // 모든 Requests에서 /**/normal/**를 제외한 모든 uri의 request는 로그인 토큰이 필요
                 .and()
                 .authorizeRequests()
-                .antMatchers("/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/", "/UserLogin","/UserJoin", "/Reserve", "/movie", "/moviedetail/", "/StoryChange").permitAll() // 해당 경로의 GET 요청은 무조건 접근을 허용
+                .antMatchers("/**/normal/**").permitAll()
                 .anyRequest().authenticated()
 //                .antMatchers("/mypage").hasRole("ADMIN") // ROLE_ADMIN 권한을 가진 사용자만 접근 허용 추후 사용
 
                 .and()
-                // cors 관련 필터 적용(전역 설정)
                 // 사전에 만든 JwtSecurityConfig 클래스를 통해 tokenProvider를 적용(Security 필터 적용)
                 .apply(new JwtSecurityConfig(tokenProvider));
 
