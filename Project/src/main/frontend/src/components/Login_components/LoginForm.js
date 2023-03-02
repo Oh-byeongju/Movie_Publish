@@ -173,8 +173,8 @@ const LoginForm = () => {
 };
 
 const Layout = styled.div`
-  min-width: 1050px;
-  margin-top: 50px;
+  width: 100%;
+  margin-top: 5rem;
   margin-bottom: 7px;
   background-color: #fff;
 `;
@@ -190,7 +190,7 @@ const Title = styled.div`
 `;
 
 const Form = styled.div`
-  width: 640px;
+  width: 47%;
   margin: 0px auto;
 `;
 
@@ -267,7 +267,7 @@ const LoginButton = styled.button`
   cursor: pointer;
   line-height: 48px;
   padding: 0 20px;
-  margin-top: 15px !important;
+  margin-top: 25px !important;
   width: 60%;
   font-size: 16px;
   border-radius: 3px;
@@ -275,7 +275,7 @@ const LoginButton = styled.button`
   text-decoration: none;
   color: #fff;
   border: 0;
-  height: 50px;
+  height: 10%;
   margin: auto;
   display: block;
 
@@ -289,8 +289,8 @@ const Links = styled.div`
   padding: 20px 0 30px 0;
   text-align: center;
   line-height: 1.1;
-  margin-top: 5px;
-  margin-bottom: 53px;
+  margin-top: 10px;
+  margin-bottom: 60px;
   margin-left: 5px;
 
   a:first-child {

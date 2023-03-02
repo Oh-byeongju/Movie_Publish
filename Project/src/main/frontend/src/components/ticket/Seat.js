@@ -12,10 +12,8 @@ import {
   USER_REMOVE,
   PAGE_RESET,
   SELECT_SEAT_REQUEST,
-  SELECT_INFOSEAT_REQUEST,
 } from "../../reducer/seat";
 import SeatButton from "./SeatButton";
-import { Schedule } from "@mui/icons-material";
 
 const ButtonGroup = Button.Group;
 const Seat = () => {
@@ -26,17 +24,21 @@ const Seat = () => {
   const [priceInfo, setPriceInfo] = useState([]); //값 더하기 //여기 배열로 값을 저장
   const [selectedRows, setSelectedRows] = useState([]);
   const { LOGIN_data } = useSelector((state) => state.R_user_login);
-  const [isChecked, setIschecked] = useState(true);
 
-  const { rows, choiceSeat, selectseat, selectinfoseat, ocuppyseat } =
-    useSelector((state) => state.seat);
+  const {
+    choiceSeat,
+    selectseat,
+    check_seat_done,
+    check_seat_error,
+    total,
+    choiceUser,
+  } = useSelector((state) => state.seat);
   const { movieData, theaterData, DayData, scheduleData } = useSelector(
     (state) => state.ticket
   );
   //결국 데이터를 받아오려면 한번에 다 받아와야함{location: A1,A id:2}2,A3,A4,A5,A6~B1,B2,B3,B4,B5,B6 이런식
   // 열의 차이를 줘야함 그리고 점유 확인, id값을 받아오고
   const dispatch = useDispatch();
-  let is_reserved;
 
   useEffect(() => {
     if (
@@ -50,20 +52,10 @@ const Seat = () => {
         type: SELECT_SEAT_REQUEST,
         data: { id: scheduleData.cid, miid: scheduleData.miid },
       });
-      dispatch({
-        type: SELECT_INFOSEAT_REQUEST,
-        data: scheduleData.miid,
-      });
     }
-    return () => {
-      dispatch({
-        type: PAGE_RESET,
-      });
-    };
-  }, []);
-  const totalNumber = numTeenager + numAdult + numKid; //셋이 더해 8 이 넘으면 안됨
+  }, [check_seat_error]);
   const plusHandlerAdult = () => {
-    if (totalNumber < selectseat.length - selectinfoseat.length) {
+    if (total < selectseat.length && total < 8) {
       setNumAdult((prev) => prev + 1);
       dispatch({
         type: USER_CHOICE,
@@ -74,7 +66,7 @@ const Seat = () => {
   };
 
   const plusHandlerTeenager = () => {
-    if (totalNumber < selectseat.length - selectinfoseat.length) {
+    if (total < selectseat.length && total < 8) {
       setNumTeenager((prev) => prev + 1);
       dispatch({
         type: USER_CHOICE,
@@ -85,7 +77,7 @@ const Seat = () => {
   };
 
   const plusHandlerKid = () => {
-    if (totalNumber < selectseat.length - selectinfoseat.length) {
+    if (total < selectseat.length && total < 8) {
       setNumKid((prev) => prev + 1);
       dispatch({
         type: USER_CHOICE,
@@ -96,7 +88,7 @@ const Seat = () => {
   };
 
   const minusHandlerAdult = () => {
-    if (totalNumber <= choiceSeat.length) {
+    if (total <= choiceSeat.length) {
       alert("선택한 좌석이 예매 인원 보다 많습니다.");
     } else if (numAdult) {
       setNumAdult((prev) => prev - 1);
@@ -108,7 +100,7 @@ const Seat = () => {
     }
   };
   const minusHandlerTeenager = () => {
-    if (totalNumber <= choiceSeat.length) {
+    if (total <= choiceSeat.length) {
       alert("선택한 좌석이 예매 인원 보다 많습니다.");
     } else if (numTeenager) {
       setNumTeenager((prev) => prev - 1);
@@ -119,9 +111,8 @@ const Seat = () => {
       });
     }
   };
-
   const minusHandlerKid = () => {
-    if (totalNumber <= choiceSeat.length) {
+    if (total <= choiceSeat.length) {
       alert("선택한 좌석이 예매 인원 보다 많습니다.");
     } else if (numKid) {
       setNumKid((prev) => prev - 1);
@@ -132,10 +123,8 @@ const Seat = () => {
       });
     }
   };
-
   const addSeats = (row) => {
-    if (totalNumber > selectedRows.length) {
-      setSelectedRows((prev) => [...prev, row]);
+    if (total > choiceSeat.length) {
       dispatch({
         type: SEAT_CHOICE,
         data: {
@@ -148,9 +137,6 @@ const Seat = () => {
   };
 
   const removeSeats = (seat) => {
-    setSelectedRows((prev) =>
-      prev.filter((choiceSeat) => choiceSeat.sid !== seat)
-    );
     dispatch({
       type: SEAT_REMOVE,
       data: seat,
@@ -255,12 +241,6 @@ const Seat = () => {
 
           <SeetReserve>
             {selectseat.map((seat, index) => {
-              is_reserved = false;
-              selectinfoseat.find((info) => {
-                if (info.seat.sid === seat.sid) {
-                  is_reserved = true;
-                }
-              });
               /*ocuppyseat.find((ocuppy) => {
                 if (
                   scheduleData.miid === ocuppy.miid &&
@@ -279,8 +259,8 @@ const Seat = () => {
                     seat={seat}
                     key={seat.sid}
                     addSeats={addSeats}
-                    is_reserved={is_reserved}
-                    totalNumber={totalNumber}
+                    is_reserved={seat.able}
+                    totalNumber={total}
                     selectedRows={selectedRows}
                     setSelectedRows={setSelectedRows}
                     removeSeats={removeSeats}

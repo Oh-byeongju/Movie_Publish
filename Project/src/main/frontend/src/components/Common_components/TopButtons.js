@@ -91,81 +91,92 @@ const TopButtons = () => {
               <SearchOutlined style={{ fontSize: "25px", color: "white" }} />
             </Button>
           </div>
-          <div className="Menu">
-            <ul className="MenuList">
-              <li className="topMenuLi">
-                <Link to="/">영화</Link>
-              </li>
-              <li className="topMenuLi">
-                <Link to="/">예매</Link>
-              </li>
-              <li className="topMenuLi">
-                <Link to="/">극장</Link>
-              </li>
-              <li className="topMenuLi">
-                <Link to="/">이벤트</Link>
-              </li>
-              <li className="topMenuLi">
-                <Link to="/">혜택</Link>
-                <div className="Black_SubMenu"></div>
-              </li>
-              <li className="topMenuLi">
-                <Link to="/">개발진</Link>
-              </li>
-              <div className="menu_pan">
-                <div className="w_1350">
-                  <div className="menu_category">
-                    <div className="title_category">영화</div>
-                    <div className="category">
-                      <Link to="/movie">전체영화</Link>
-                    </div>
-                    <div className="category">큐레이션</div>
-                    <div className="category">무비포스트</div>
-                  </div>
-                  <div className="menu_category">
-                    <div className="title_category">예매</div>
-                    <div className="category">
-                      {" "}
-                      <Link to="/reserve">빠른예매</Link>
-                    </div>
-                    <div className="category">상영시간표</div>
-                  </div>
-                  <div className="menu_category">
-                    <div className="title_category">극장</div>
-                    <div className="category">전체극장</div>
-                    <div className="category">특별관</div>
-                  </div>
-                  <div className="menu_category">
-                    <div className="title_category">이벤트</div>
-                    <div className="category">전체극장</div>
-                    <div className="category">특별관</div>
-                  </div>
-                  <div className="menu_category">
-                    <div className="title_category">혜택</div>
-                    <div className="category">맴버쉽</div>
-                    <div className="category">제휴할인</div>
-                  </div>
-                  <div className="menu_category">
-                    <div className="title_category">개발진</div>
-                    <div className="category">개발진</div>
-                  </div>
-                </div>
-              </div>
-            </ul>
-          </div>
+          <ul className="MenuListLeft">
+            <li className="topMenuLiLeft">
+              <strong>
+                영화  
+              </strong>
+            </li>
+            <li className="topMenuLiLeft">
+              <strong>
+                예매
+              </strong>
+            </li>
+            <li className="topMenuLiLeft">
+              <strong>
+                극장
+              </strong>
+            </li>
+          </ul>
+          <ul className="MenuListRight">
+            <li className="topMenuLiRight">
+              <strong>
+                이벤트
+              </strong>
+            </li>
+            <li className="topMenuLiRight">
+              <strong>
+                혜택
+              </strong>
+            </li>
+            <li className="topMenuLiRight">
+              <strong>
+                개발진
+              </strong>
+            </li>
+          </ul>
           <div className="RightIcon">
-            <Button style={{ marginRight: "5px" }}>
-              <CalendarOutlined
-                style={{
-                  fontSize: "25px",
-                  marginRight: "15px",
-                  color: "white",
-                }}
-              />
-            </Button>
-            <Button>
-              <UserOutlined style={{ fontSize: "25px", color: "white" }} />
-            </Button>
+          <Button style={{ marginRight: "5px" }}>
+            <CalendarOutlined
+              style={{
+                fontSize: "25px",
+                marginRight: "15px",
+                color: "white",
+              }}
+            />
+          </Button>
+          <Button>
+            <UserOutlined style={{ fontSize: "25px", color: "white" }} />
+          </Button>
+          </div>
+          <div className="menu_pan">
+            <div className="layout">
+              <div className="menu_category">
+                <div className="title_category">영화</div>
+                <div className="category">
+                  <Link to="/movie">전체영화</Link>
+                </div>
+                <div className="category">큐레이션</div>
+                <div className="category">무비포스트</div>
+              </div>
+              <div className="menu_category">
+                <div className="title_category">예매</div>
+                <div className="category">
+                  {" "}
+                  <Link to="/reserve">빠른예매</Link>
+                </div>
+                <div className="category">상영시간표</div>
+              </div>
+              <div className="menu_category">
+                <div className="title_category">극장</div>
+                <div className="category">전체극장</div>
+                <div className="category">특별관</div>
+              </div>
+              <div className="menu_category">
+                <div className="title_category">이벤트</div>
+                <div className="category">진행 이벤트</div>
+                <div className="category">종료된 이벤트</div>
+              </div>
+              <div className="menu_category">
+                <div className="title_category">혜택</div>
+                <div className="category">맴버쉽</div>
+                <div className="category">제휴할인</div>
+              </div>
+              <div className="menu_category">
+                <div className="title_category">개발진</div>
+                <div className="category">개발진</div>
+              </div>
+            </div>
           </div>
         </div>
       </NavBar>
@@ -180,62 +191,71 @@ const NavBar = styled.div`
   color: white;
   text-align: center;
   justify-content: center;
-  height: 92px;
+  height: 5.75rem;
   border-bottom: 1px solid #fff;
   background-color: black;
   z-index: 2;
+
   .logo {
     position: absolute;
-    left: 53.5%;
-    width: 75px;
-    height: 90px;
+    left: 50%;
+    top: 0;
+    width: 4.688rem;
+    height: 5.625rem;
     margin: 0 0 0 -70px;
     padding: 0;
     background: url(/img/logo_black.jpg);
     background-size: cover;
+    transform: translate(-50%, 0);
+    margin: 0;
+
     a {
       display: block;
-      width: 75px;
-      height: 90px;
+      width: 4.688rem;
+      height: 5.625rem;
       margin: 0;
       padding: 0;
       font-size: 0;
       line-height: 0;
     }
-    // 로고 누르면 홈으로 돌아가게끔 설정, 로고 이미지는 img 안에 있음
   }
+
   .nav {
-    position: absolute;
+    position: relative;
     background-color: black;
-    width: 1150px;
+    width: 100%;
   }
+
   .Top_left {
     position: absolute;
-    top: 15px;
-    left: 0;
+    top: 0.938rem;
+    left: 13%;
     font-size: 0.8667em;
     font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+    transform: translate(-13%);
     a {
       color: #888;
       float: left;
-      margin-right: 20px;
+      margin-right: 1.25rem;
       text-decoration: none;
       :hover {
         text-decoration: underline;
       }
     }
   }
+
   .Top_right {
     position: absolute;
-    top: 15px;
-    right: 0;
+    top: 0.938rem;
+    right: 13%;
     font-size: 0.8667em !important;
     font-family: NanumBarunGothic, Dotum, "돋움", sans-serif !important;
+    transform: translate(13%);
     a {
-      margin-top: 1.2px;
+      margin-top: 0.075rem;
       color: #888;
       float: left;
-      margin-right: 20px;
+      margin-right: 1.25rem;
       text-decoration: none;
       :hover {
         text-decoration: underline;
@@ -244,7 +264,7 @@ const NavBar = styled.div`
     button {
       color: #888;
       float: left;
-      margin-right: 20px;
+      margin-right: 1.25rem;
       text-decoration: none;
       background-color: black;
       padding: 0;
@@ -255,10 +275,10 @@ const NavBar = styled.div`
       }
     }
     span {
-      margin-top: 1.4px;
+      margin-top: 0.088rem;
       color: #888;
       float: left;
-      margin-right: 15px;
+      margin-right: 0.938rem;
       text-decoration: none;
       background-color: black;
       padding: 0;
@@ -267,127 +287,169 @@ const NavBar = styled.div`
       font-family: NanumBarunGothic, Dotum, "돋움", sans-serif !important;
     }
   }
+
   .LeftIcon {
     display: flex;
     position: absolute;
-    top: 50px;
-    left: -40px;
+    top: 75%;
+    left : 10.5%;
     width: 36px;
-    margin-left: 10px;
+    transform: translate(-10.5%, -75%);
   }
+
   .RightIcon {
     display: flex;
     position: absolute;
-    top: 50px;
+    top: 75%;
+    right : 13%;
     width: 36px;
-    right: 50px;
+    transform: translate(13%, -75%);
   }
-  .Menu {
-    position: relative;
-    width: 100%;
-    margin: 90px auto 0 auto;
-    .MenuList {
-      position: relative;
-      top: -40px;
-      .topMenuLi:hover ~ .menu_pan {
-        display: block;
-      }
-      .menu_pan {
-        width: 1414px;
-        position: absolute;
-        left: -260px;
-        top: 43px;
-        z-index: 999;
-        padding-left: 180px;
-        font-size: 15px;
-        display: none;
-        background-color: black;
-        &:hover {
-          display: block;
-        }
-      }
-      .menu_category {
-        float: left;
-        margin: 30px 0;
-        transition: 0.2s ease-in-out;
-        transform: translateY (-20px);
-      }
-      .menu_category .category {
-        transition: 0.2s ease-in-out;
-        transform: translateY (-20px);
-      }
-      .menu_category:nth-child(1) {
-        position: relative;
-        left: 150px;
-      }
-      .menu_category:nth-child(2) {
-        position: relative;
-        left: 170px;
-      }
-      .menu_category:nth-child(3) {
-        position: relative;
-        left: 190px;
-      }
-      .menu_category:nth-child(4) {
-        position: relative;
-        left: 210px;
-      }
-      .menu_category:nth-child(5) {
-        position: relative;
-        left: 230px;
-      }
-      .menu_category:nth-child(6) {
-        position: relative;
-        left: 250px;
-      }
-      .caterogy:nth-child(1) {
-        font-weight: bold;
-      }
-      .category {
-        padding: 9px 0px;
-        margin-right: 100px;
+
+  .MenuListLeft {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 100%;
+    left : 28%;
+    transform: translate(-28%, -95%);
+    display : flex;
+    width: 23%;
+
+    :hover ~ .menu_pan{
+      display: block;
+    }
+      // translate는 좌우, 상하
+    .topMenuLiLeft {
+      list-style-type: none;
+      width: 33.3%;
+      float: left;
+      height: 40px;
+
+      strong {
         cursor: pointer;
-      }
-      .title_category {
-        padding-right: 100px;
-        font-weight: bold;
-        padding-bottom: 10px;
-      }
-      .category:hover {
-        text-decoration: underline;
-      }
-      li {
-        list-style-type: none;
-        width: 110px;
-        position: absolute;
-        height: 45px;
-      }
-      li:nth-child(1) {
-        left: 176px;
-      }
-      li:nth-child(2) {
-        left: 266px;
-      }
-      li:nth-child(3) {
-        left: 356px;
-      }
-      li:nth-child(4) {
-        left: 710px;
-      }
-      li:nth-child(5) {
-        left: 820px;
-      }
-      li:nth-child(6) {
-        left: 930px;
-      }
-      a {
-        text-decoration: none;
-        color: white;
+        font-weight: 500;
       }
     }
   }
-  // 서브 메뉴가 길경우 사용하면 됨
-  // ex) 이벤트의 하위 메뉴는 6글자, 5글자라서 이 클래스이름 사용
+
+  .MenuListRight {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 100%;
+    right : 28%;
+    transform: translate(28%, -95%);
+    display : flex;
+    width: 23%;
+
+    :hover ~ .menu_pan{
+      display: block;
+    }
+
+    .topMenuLiRight {
+      list-style-type: none;
+      width: 33.3%;
+      float: right;
+      height: 40px;
+
+      strong {
+        cursor: pointer;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .menu_pan {
+    width: 100%;
+    position: absolute;
+    font-size: 15px;
+    display: none;
+    z-index: 999;
+    top: 93px;
+    background-color: black;
+    &:hover {
+      display: block;
+    }
+  }
+
+  .layout {
+    position: relative;
+    height: 204px;
+  }
+
+  .menu_category {
+    float: left;
+    margin: 30px 0;
+    transition: 0.2s ease-in-out;
+    transform: translateY (-20px);
+  }
+
+  .menu_category .category {
+    transition: 0.2s ease-in-out;
+    transform: translateY (-20px);
+  }
+
+  .menu_category:nth-child(1) {
+    position: absolute;
+    left: 22%;
+    transform: translate(-22%);
+  }
+
+  .menu_category:nth-child(2) {
+    position: absolute;
+    left: 35%;
+    transform: translate(-35%);
+  }
+
+  .menu_category:nth-child(3) {
+    position: absolute;
+    left: 47%;
+    transform: translate(-47%);
+  }
+
+  .menu_category:nth-child(4) {
+    position: absolute;
+    left: 60%;
+    transform: translate(-60%);
+  }
+
+  .menu_category:nth-child(5) {
+    position: absolute;
+    left: 73%;
+    transform: translate(-73%);
+  }
+
+  .menu_category:nth-child(6) {
+    position: absolute;
+    left: 84%;
+    transform: translate(-84%);
+  }
+
+  .caterogy:nth-child(1) {
+    font-weight: bold;
+  }
+
+  .category {
+    padding: 9px 0px;
+    margin-right: 100px;
+    cursor: pointer;
+  }
+
+  .title_category {
+    padding-right: 100px;
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
+
+  .category:hover {
+    text-decoration: underline;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
 `;
 
 const Button = styled.button`

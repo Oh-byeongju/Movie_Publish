@@ -55,9 +55,10 @@ const CardList = styled.div`
 const Title = styled.div`
   position: absolute;
   top: 0;
-  left: 720px;
+  left: 50%;
   width: 80px;
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, 0);
 `;
 
 const More = styled.div`
@@ -70,15 +71,22 @@ const More = styled.div`
 `;
 
 const UL = styled.ul`
-  align-items: center;
+  position: relative;
+  display : flex;
+  justify-content: center;
+  align-items : center;
   list-style-type: none;
-  padding-left: 160px;
   margin-bottom: 45px;
+  padding: 0;
 
   &:after {
     content: "";
     clear: both;
     display: block;
+  }
+
+  & li:last-child {
+    padding-right: 0px !important; 
   }
 `;
 

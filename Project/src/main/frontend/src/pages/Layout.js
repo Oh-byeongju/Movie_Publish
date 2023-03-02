@@ -22,7 +22,7 @@ const Layout = () => {
   }, [LOGIN_data.uname, dispatch]);
 
   return (
-    <div className = "Parent_Component" >
+    <div className = "Parent_Component" style={{height: "100%"}} >
       <TopButtons />
       <Outlet />
       <Footer />

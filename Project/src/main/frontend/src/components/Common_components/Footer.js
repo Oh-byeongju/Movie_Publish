@@ -97,23 +97,24 @@ const Footer = () => {
 const FooterLayout = styled.div`
   background: #ebeef1;
   position: relative;
+  height: 50%;
 `;
 
 const FooterLink = styled.div`
   background: #dddfe4;
   overflow: hidden;
-  height: 56px;
+  height: 3.5rem;
   border-left: none;
 `;
 
 const FooterLinkList = styled.ul`
-  padding-left: 16px;
-  padding-right: 16px;
-  max-width: 1044px;
-  margin: 19px auto 19px -33px;
-  height: 19px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 70%;
+  margin: 1.188rem auto 1.188rem -2.063rem;
+  height: 1.188rem;
   padding: 0;
-  margin: 19px auto 18px;
+  margin: 1.188rem auto 1.125rem;
   list-style: none;
 
   li {
@@ -140,10 +141,10 @@ const FooterLinkListItem = styled.li`
   border-left: 1px solid #c5cbd0;
   color: #7b858e;
   line-height: 19px;
-  font-size: 16px;
+  font-size: 1rem;
   list-style: none;
-  padding-left: 16px;
-  margin-left: 16px;
+  padding-left: 1rem;
+  margin-left: 1rem;
 `;
 
 const FooterLinkListItemHide = styled.li`
@@ -152,17 +153,17 @@ const FooterLinkListItemHide = styled.li`
   border-left: 1px solid #c5cbd0;
   color: #7b858e;
   line-height: 19px;
-  font-size: 16px;
-  padding-left: 16px;
-  margin-left: 16px;
+  font-size: 1rem;
+  padding-left: 1rem;
+  margin-left: 1rem;
 `;
 
 const Content = styled.div`
   position: relative;
-  padding: 8px 0px 8px 0px;
-  max-width: 1044px;
+  padding: 0.5rem 0 0.5rem 0;
+  width: 70%;
   margin: 0 auto;
-  height: 212px;
+  height: 13.25rem;
 
   &:after {
     content: "";
@@ -173,21 +174,21 @@ const Content = styled.div`
 
 const CorpInfo = styled.div`
   line-height: 20px;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #7b858e;
 `;
 
 const CorpLogo = styled.div`
   display: block;
-  width: 93px;
-  margin-bottom: 24px;
+  width: 5.813rem;
+  margin-bottom: 1.5rem;
 `;
 
 const CorpSns = styled.div`
   margin-top: 0;
   position: absolute;
-  bottom: 32px;
-  right: 5px;
+  bottom: 2rem;
+  right: 0.313rem;
 
   &:after {
     content: "";
@@ -207,7 +208,7 @@ const CorpSnsList = styled.ul`
 
 const CorpSnsListItem = styled.li`
   float: left;
-  margin-left: 15px;
+  margin-left: 0.9rem;
   background-color: #eaeef1;
 `;
 

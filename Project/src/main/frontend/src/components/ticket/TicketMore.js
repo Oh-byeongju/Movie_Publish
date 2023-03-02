@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
@@ -10,20 +10,83 @@ import {
 } from "../../reducer/seat";
 import { Login } from "@mui/icons-material";
 import { useLocation, Link, useNavigate } from "react-router-dom";
-import { RESERVE_LOGIN_PAGE } from "../../reducer/ticket";
+import { PAYMENT_REQUEST, RESERVE_LOGIN_PAGE } from "../../reducer/ticket";
 
 const TicketMore = ({ setPage, page }) => {
   const { movieData, theaterData, DayData, scheduleData } = useSelector(
     (state) => state.ticket
   );
   const { LOGIN_data } = useSelector((state) => state.R_user_login);
-
   const { choiceSeat, choiceUser, price } = useSelector((state) => state.seat);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { pathname } = useLocation();
   //사용자가 선택한 영화 및 정보를 표시해주는 컴포넌트 2023-02-13 수정완(강경목)
   //좌석 페이지로 넘어가야함 데이터와 함께
+
+  //제이쿼리 대신 선언
+  useEffect(() => {
+    const jquery = document.createElement("script");
+    jquery.src = "https://code.jquery.com/jquery-1.12.4.min.js";
+    const iamport = document.createElement("script");
+    iamport.src = "https://cdn.iamport.kr/js/iamport.payment-1.1.7.js";
+    document.head.appendChild(jquery);
+    document.head.appendChild(iamport);
+    return () => {
+      document.head.removeChild(jquery);
+      document.head.removeChild(iamport);
+    };
+  }, []);
+
+  //
+  const onClickPayment = () => {
+    const { IMP } = window;
+    IMP.init([["imp57612323"]]); // 결제 데이터 정의
+    const date = new window.Date().getTime();
+    IMP.request_pay(
+      {
+        pg: "kcp",
+        pay_method: "card",
+        merchant_uid: "merchant_" + date,
+        name: "상품1", //결제창에서 보여질 이름
+        amount: 100, //실제 결제되는 가격
+        buyer_email: "iamport@siot.do",
+        buyer_name: "구매자이름",
+        buyer_tel: "010-1234-5678",
+        buyer_addr: "서울 강남구 도곡동",
+        buyer_postcode: "123-456",
+      },
+      function (rsp) {
+        if (rsp.success) {
+          //[1] 서버단에서 결제정보 조회를 위해 imp_uid 전달하기
+
+          dispatch({
+            type: PAYMENT_REQUEST,
+            data: rsp.imp_uid,
+          }).done(function (data) {
+            //[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
+            if (rsp.success) {
+              var msg = "결제가 완료되었습니다.";
+              msg += "\n고유ID : " + rsp.imp_uid;
+              msg += "\n상점 거래ID : " + rsp.merchant_uid;
+              msg += "결제 금액 : " + rsp.paid_amount;
+              msg += "카드 승인번호 : " + rsp.apply_num;
+
+              alert(msg);
+            } else {
+              //[3] 아직 제대로 결제가 되지 않았습니다.
+              //[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
+            }
+          });
+        } else {
+          var msg = "결제에 실패하였습니다.";
+          msg += "에러내용 : " + rsp.error_msg;
+
+          alert(msg);
+        }
+      }
+    );
+  };
 
   return (
     <TicketWrapper>
@@ -117,6 +180,7 @@ const TicketMore = ({ setPage, page }) => {
                     age: seatnumber,
                   },
                 });
+                onClickPayment();
               }
             }}
           >

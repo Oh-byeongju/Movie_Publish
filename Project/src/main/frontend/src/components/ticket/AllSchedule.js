@@ -66,7 +66,7 @@ const AllSchedule = () => {
                           {sc.type} {sc.name}
                         </Theater>
                         <Seat>
-                          <Now>{sc.count}/</Now>
+                          <Now>{sc.allcount - sc.count}/</Now>
                           <All>{sc.allcount}</All>
                         </Seat>
                       </Info>

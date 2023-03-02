@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -9,12 +9,14 @@ const SeatButton = ({
   selectedRows,
   is_reserved,
   removeSeats,
-  setSelectedRows,
 }) => {
   const [isChecked, setIschecked] = useState(true);
-  const { selectinfoseat, choiceSeat, choiceUser } = useSelector(
-    (state) => state.seat
-  );
+  const { selectinfoseat, choiceSeat, choiceUser, check_seat_error } =
+    useSelector((state) => state.seat);
+
+  useEffect(() => {
+    setIschecked(true);
+  }, [check_seat_error]);
   const checkedSeat = () => {
     if (choiceUser.length > choiceSeat.length && isChecked) {
       setIschecked((prev) => !prev);
@@ -30,15 +32,16 @@ const SeatButton = ({
   return (
     <>
       <SeatNumber
-        is_reserved={is_reserved}
+        is_reserved={is_reserved} //able, disable
         isChecked={isChecked}
-        disabled={seat.is_reserved}
         seatnum={seat.id}
         sid={seat.sid}
         selectinfoseat={selectinfoseat}
         onClick={() => {
           checkedSeat();
-          isChecked ? addSeats(seat) : removeSeats(seat.sid);
+          isChecked && is_reserved === "disable"
+            ? addSeats(seat)
+            : removeSeats(seat.sid);
         }}
       >
         {seat.sname}
@@ -55,7 +58,8 @@ const SeatNumber = styled.button`
   color: black;
   float: left;
   background-color: ${(props) =>
-    props.is_reserved ? "grey" : props.isChecked ? "lightblue" : ""};
+    props.is_reserved === "able" ? "grey" : props.isChecked ? "lightblue" : ""};
+
   border: none;
   cursor: ${(props) => (props.is_reserved ? "default" : "pointer")};
 `;

@@ -108,7 +108,7 @@ const Box = ({ movie }) => {
 
 const LI = styled.li`
   float: left;
-  padding-right: 65px;
+  padding-right: 105px;
   width: 250px;
   height: 420px;
 
@@ -122,7 +122,6 @@ const LI = styled.li`
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
       text-align: center;
     }
 

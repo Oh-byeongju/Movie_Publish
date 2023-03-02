@@ -65,6 +65,10 @@ export const initalState = {
   select_schedule_done: false,
   select_schedule_error: null,
 
+  payment_loading: false,
+  payment_done: false,
+  payment_error: null,
+
   selectSchedule: [],
   disableTheater: [],
 
@@ -156,7 +160,13 @@ export const SELECT_SCHEDULE_REQUEST = "SELECT_SCHEDULE_REQUEST";
 export const SELECT_SCHEDULE_SUCCESS = "SELECT_SCHEDULE_SUCCESS";
 export const SELECT_SCHEDULE_FAILURE = "SELECT_SCHEDULE_FAILURE";
 
+export const PAYMENT_REQUEST = "PAYMENT_REQUEST";
+export const PAYMENT_SUCCESS = "PAYMENT_SUCCESS";
+export const PAYMENT_FAILURE = "PAYMENT_FAILURE";
+////////////////////////////////////////밑은 데이터 모아두는 곳
+
 export const MOVIE_DATA_SUCCESS = "MOVIE_DATA_SUCCESS";
+
 //검색한 데이터 담아두기 위한 액션
 export const MOVIE_DATA = "MOVIE_DATA";
 export const THEATER_DATA = "THEATER_DATA";
@@ -547,6 +557,28 @@ const ticket = (state = initalState, action) => {
         select_schedule_loading: false,
         select_schedule_done: false,
         select_schedule_error: null,
+      };
+
+    case PAYMENT_REQUEST:
+      return {
+        ...state,
+        payment_loading: true,
+        payment_done: false,
+        payment_error: null,
+      };
+    case PAYMENT_SUCCESS:
+      return {
+        ...state,
+        payment_loading: false,
+        payment_done: true,
+        payment_error: null,
+      };
+    case PAYMENT_FAILURE:
+      return {
+        ...state,
+        payment_loading: false,
+        payment_done: false,
+        payment_error: null,
       };
 
     case MOVIE_DATA:

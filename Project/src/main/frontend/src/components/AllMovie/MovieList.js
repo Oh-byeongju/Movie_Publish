@@ -65,7 +65,7 @@ const MovieList = () => {
           <h1>전체영화</h1>
         </div>
         <div className="search">
-          <p style={{ fontWeight: "1000" }}>
+          <p>
             {`${allMovie.slice(0, Limit).length}개의 영화가 검색되었습니다.`}
           </p>
           <div className="search_button">
@@ -75,7 +75,7 @@ const MovieList = () => {
               onSearch={onSearch}
               style={{
                 width: 200,
-                height: 50,
+                height: 10,
               }}
             />
           </div>
@@ -118,28 +118,36 @@ const MovieList = () => {
 
 const Container = styled.div`
   padding: 0;
-  width: 1250px;
-  margin-left: 170px;
-  box-sizing: border-box;
+  width: 1235px;
+  margin : 0 auto;
+  box-sizing: border-box; 
   margin-bottom: 0;
 `;
 
 const InnerWraps = styled.div`
   width: 100%;
+  padding-left: 10px;
 
   .titleMenu {
     position: relative;
-    top: 20px;
+    top: 18px;
   }
   .search {
-    display: inline-box;
-    width: 93%;
+    position: relative;
+    width: 98.4%;
     border-bottom: 3px solid #241d1e;
-    padding-bottom: 15px;
+    padding-bottom: 8px;
+    margin-top: 30px;
+
+    p {
+      font-weight: 1000;
+      padding-top: 8px;
+    }
+
     .search_button {
       position: absolute;
-      right: 190px;
-      padding-top: 15px;
+      top: 0;
+      right: 0;
     }
   }
 `;
@@ -168,33 +176,38 @@ const UL = styled.ul`
   align-items: center;
   list-style-type: none;
   width: 100%;
-  padding-left: 0px;
   height: 100%;
+  padding: 0;
 
   &:after {
     content: "";
     clear: both;
     display: block;
   }
+
+  li:nth-child(4n) {
+    padding-right: 0px !important;
+  }
 `;
 
 const NoSearch = styled.div`
-  padding: 60px 0 60px 0;
+  width: 98.4%;
+  padding: 95px 0 95px 0;
   color: #222;
   text-align: center;
   font-size: 1.3333em;
 
   p {
     margin: 0;
-    padding: 50px 0;
-    border: 1.5px solid #f5f5f5;
-    border-width: 1.5px 0 1.5px 0;
+    padding: 90px 0;
+    border: 2px solid #f5f5f5;
+    border-width: 2px 0 2px 0;
   }
 `;
 
 const More = styled.button`
   margin-bottom: 70px;
-  width: 1170px;
+  width: 98.5%;
   height: 40px;
   background-color: transparent;
   border: 1px solid gainsboro;

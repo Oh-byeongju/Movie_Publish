@@ -39,6 +39,9 @@ import {
   SELECT_SCHEDULE_SUCCESS,
   SELECT_SCHEDULE_FAILURE,
   SELECT_SCHEDULE_REQUEST,
+  PAYMENT_REQUEST,
+  PAYMENT_SUCCESS,
+  PAYMENT_FAILURE,
 } from "../reducer/ticket";
 import { http } from "../lib/http";
 
@@ -528,6 +531,36 @@ function* selectSchedule(action) {
   }
 }
 
+async function paymentApi(data) {
+  return await http
+    .post("/v2/normal/verifyIamport/", {
+      params: {
+        imp_uid: data,
+      },
+    })
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error.response;
+    });
+}
+
+function* payment(action) {
+  const result = yield call(paymentApi, action.data);
+  if (result.status === 200) {
+    yield put({
+      type: PAYMENT_SUCCESS,
+      data: result.data,
+    });
+  } else {
+    alert("실패");
+    yield put({
+      type: PAYMENT_FAILURE,
+      data: result.status,
+    });
+  }
+}
 function* TallMovieSaga() {
   yield takeLatest(T_ALLMOVIE_REQUEST, allMovieLoad);
 }
@@ -571,6 +604,9 @@ function* selectDayMovieToTheaterSaga() {
 function* selectScheduleSaga() {
   yield takeLatest(SELECT_SCHEDULE_REQUEST, selectSchedule);
 }
+function* paymentSaga() {
+  yield takeLatest(PAYMENT_REQUEST, payment);
+}
 
 export default function* ticketSaga() {
   yield all([
@@ -587,5 +623,6 @@ export default function* ticketSaga() {
     fork(selectDayTheaterToMovieSaga),
     fork(selectDayMovieToTheaterSaga),
     fork(selectScheduleSaga),
+    fork(paymentSaga),
   ]);
 }

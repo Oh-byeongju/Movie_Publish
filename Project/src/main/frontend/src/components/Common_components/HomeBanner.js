@@ -2,8 +2,7 @@ import React from "react";
 import { Carousel } from "antd";
 
 const contentStyle = {
-  height: "650px",
-  width: "1670px",
+  width: "100%",
   lineHeight: "160px",
   textAlign: "center",
 };

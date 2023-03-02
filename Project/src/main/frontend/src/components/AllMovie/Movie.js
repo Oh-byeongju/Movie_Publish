@@ -149,8 +149,8 @@ const Movie = ({ movie }) => {
 
 const LI = styled.li`
   float: left;
-  padding-right: 82px;
-  width: 230px;
+  padding-right: 83px;
+  width: 245px;
   height: 450px;
   padding-bottom: 15px;
   .banner_img {
@@ -186,7 +186,7 @@ const Img = styled.img`
 
 const Text = styled.div`
   position: absolute;
-  width: 200px;
+  width: 180px;
   top: -45px;
   left: -127px;
   color: white;
@@ -199,7 +199,7 @@ const Text = styled.div`
 
 const TextScore = styled.div`
   position: absolute;
-  width: 200px;
+  width: 180px;
   top: -10px;
   left: -130px;
   color: white;
@@ -213,7 +213,6 @@ const TextScore = styled.div`
     color: #00cccc;
   }
 `;
-
 const Des = styled.div`
   .title {
     display: block;
@@ -261,6 +260,7 @@ const Des = styled.div`
     }
   }
 `;
+
 const Button = styled.div`
   position: absolute;
   display: flex;

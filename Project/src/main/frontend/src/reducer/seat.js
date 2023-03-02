@@ -9,11 +9,11 @@ export const initalState = {
   select_infoseat_done: false,
   select_infoseat_error: null,
   selectinfoseat: [],
-  ocuppyseat: [],
   check_seat_loading: false,
   check_seat_done: false,
   check_seat_error: null,
   price: 0,
+  total: 0,
 };
 
 export const PAGE_RESET = "PAGE_RESET";
@@ -27,10 +27,6 @@ export const USER_REMOVE = "USER_REMOVE";
 export const SELECT_SEAT_REQUEST = "SELECT_SEAT_REQUEST";
 export const SELECT_SEAT_SUCCESS = "SELECT_SEAT_SUCCESS";
 export const SELECT_SEAT_FAILURE = "SELECT_SEAT_FAILURE";
-
-export const SELECT_INFOSEAT_REQUEST = "SELECT_INFOSEAT_REQUEST";
-export const SELECT_INFOSEAT_SUCCESS = "SELECT_INFOSEAT_SUCCESS";
-export const SELECT_INFOSEAT_FAILURE = "SELECT_INFOSEAT_FAILURE";
 
 export const CHECK_SEAT_REQUEST = "CHECK_SEAT_REQUEST";
 export const CHECK_SEAT_SUCCESS = "CHECK_SEAT_SUCCESS";
@@ -46,6 +42,7 @@ const seat = (state = initalState, action) => {
         choiceSeat: [],
         choiceUser: [],
         price: 0,
+        total: 0,
       };
     case SEAT_CHOICE:
       return {
@@ -67,6 +64,7 @@ const seat = (state = initalState, action) => {
         ...state,
         choiceUser: [...state.choiceUser, action.data],
         price: state.price + action.price,
+        total: state.total + 1,
       };
 
     case USER_REMOVE:
@@ -79,6 +77,7 @@ const seat = (state = initalState, action) => {
         ...state,
         choiceUser: array, //복사
         price: state.price - action.price,
+        total: state.total - 1,
       };
     case SELECT_SEAT_REQUEST:
       return {
@@ -102,28 +101,6 @@ const seat = (state = initalState, action) => {
         select_seat_done: false,
         select_seat_error: null,
       };
-    case SELECT_INFOSEAT_REQUEST:
-      return {
-        ...state,
-        select_infoseat_loading: true,
-        select_infoseat_done: false,
-        select_infoseat_error: null,
-      };
-    case SELECT_INFOSEAT_SUCCESS:
-      return {
-        ...state,
-        select_infoseat_loading: false,
-        select_infoseat_done: true,
-        select_infoseat_error: null,
-        selectinfoseat: action.data,
-      };
-    case SELECT_INFOSEAT_FAILURE:
-      return {
-        ...state,
-        select_infoseat_loading: false,
-        select_infoseat_done: false,
-        select_infoseat_error: null,
-      };
 
     case CHECK_SEAT_REQUEST:
       return {
@@ -133,26 +110,19 @@ const seat = (state = initalState, action) => {
         check_seat_error: null,
       };
     case CHECK_SEAT_SUCCESS:
-      /*      let newState = { ...state };
-
-      const result = state.choiceSeat.filter((item) => {
-        return !action.data.some((other) => other.seatid === item.seat_id);
-      }); //교집합 some을 이용한  seat에서 ocuppy 제거*/
       return {
         ...state,
         check_seat_loading: false,
         check_seat_done: true,
         check_seat_error: null,
-        ocuppyseat: action.data /*
-        ocuppyseat: newState.ocuppyseat.concat(action.data),
-        choiceSeat: result,*/,
       };
     case CHECK_SEAT_FAILURE:
       return {
         ...state,
         check_seat_loading: false,
         check_seat_done: false,
-        check_seat_error: null,
+        check_seat_error: action.error,
+        choiceSeat: [],
       };
     default:
       return state;
